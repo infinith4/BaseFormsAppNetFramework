@@ -23,7 +23,7 @@ namespace BaseFormsApp
             try
             {
                 var logUtil = new LogUtil();
-                logUtil.ConsoleWriteLineWithErrorLog("Failed CollectLogs.Application_UnhandledException: ", (Exception)e.ExceptionObject);
+                logUtil.ErrorLog("Failed CollectLogs.Application_UnhandledException: ", (Exception)e.ExceptionObject);
             }
             finally
             {

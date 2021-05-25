@@ -12,10 +12,10 @@ namespace BaseFormsApp.Tests.Utils
     public class LogUtilTest
     {
         [TestMethod]
-        public void ConsoleWriteLineWithInfoLogMethod()
+        public void InfoLogMethod()
         {
             var logUtil = new LogUtil();
-            logUtil.ConsoleWriteLineWithInfoLog("error");
+            logUtil.InfoLog("error");
         }
     }
 }

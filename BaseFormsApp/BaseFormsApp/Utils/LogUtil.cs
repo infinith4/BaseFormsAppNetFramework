@@ -10,20 +10,14 @@ namespace BaseFormsApp.Utils
     public class LogUtil
     {
         private readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public void ConsoleWriteLineWithInfoLog(object message)
+        public void InfoLog(object message)
         {
             this.logger.Info(message);
-            Console.WriteLine(message);
         }
 
-        public void ConsoleWriteLineWithErrorLog(object message, Exception exception)
+        public void ErrorLog(object message, Exception exception)
         {
             this.logger.Error(message, exception);
-            Console.WriteLine(message);
-            if (exception != null)
-            {
-                Console.WriteLine(exception);
-            }
         }
     }
 }
