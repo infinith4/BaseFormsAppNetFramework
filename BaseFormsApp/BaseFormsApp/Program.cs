@@ -1,22 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System;
 using System.Windows.Forms;
+using BaseFormsApp.Utils;
 
 namespace BaseFormsApp
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+        }
+
+        private static void Application_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            //UIスレッド以外での予期しない例外発生時にプロセスを落とす
+            try
+            {
+                var logUtil = new LogUtil();
+                logUtil.ConsoleWriteLineWithErrorLog("Failed CollectLogs.Application_UnhandledException: ", (Exception)e.ExceptionObject);
+            }
+            finally
+            {
+                Environment.Exit(1);
+            }
         }
     }
 }
